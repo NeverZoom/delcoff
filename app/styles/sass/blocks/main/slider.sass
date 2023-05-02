@@ -1,0 +1,60 @@
+.slider
+  padding: 50px 0 50px 0
+  background: #111A4D
+  border-radius: 40px 40px 0 0
+  color: white
+  .tag
+    color: white
+    border: 2px solid #FFFFFF
+  .nav-slider
+    padding: 8px
+    margin-top: 20px
+    margin-bottom: 30px
+    background: #EDEFF7
+    border-radius: 26px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    .item.active
+      background: #111A4D
+      color: #FFFFFF
+    .item
+      padding: 48px 34px
+      border-radius: 20px
+      font-weight: 500
+      font-size: 11px
+      line-height: 187.9%
+      text-align: center
+      letter-spacing: 0.125em
+      text-transform: uppercase
+      color: #0B154E
+      transition: all 0.3s ease
+      &:hover
+        background: #111A4D
+        cursor: pointer
+        color: #FFFFFF
+  .data-slide.active
+    display: flex
+  .data-slide
+    position: relative
+    display: none
+    .info
+      height: 100%
+      font-weight: 500
+      font-size: 14px
+      line-height: 173.9%
+      letter-spacing: 0.1em
+      color: #FFFFFF
+      span
+        display: block
+        margin: 150px 0 130px 0
+    img
+      width: 45vw
+      object-fit: cover
+      right: 0
+      top: 0
+      position: absolute
+  .outline-grey
+    margin-top: 50px
+    position: relative
+    z-index: 3
