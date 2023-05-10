@@ -52,30 +52,52 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	if (document.querySelector('.map')) {
-		;(function() {
-			if (typeof ymaps === 'undefined') {
-				return;
-			}
-		
-			ymaps.ready(function () {
-				var ymap = document.querySelector('.map');
-  	    var coordinates = ymap.getAttribute('data-coordinates');
-  	    var address = ymap.getAttribute('data-address');
-				var myMap = new ymaps.Map('ymap2', {
-								center: coordinates.split(','),
-								zoom: 17
-						}, {
-								searchControlProvider: 'yandex#search'
-						}),
-						myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-								balloonContent: address
-						});
-				myMap.geoObjects.add(myPlacemark);
-				myMap.behaviors.disable('scrollZoom');
-		});
-		})();
+	$('.service_popup').on('mfpClose', function(e /*, params */) {
+		$('.error-text').addClass('d-none');
+		$('#phone').css('border-color', '');
+		$('#name').css('border-color', '');
+		$('form .button.dark.icon').removeClass('disabled');
+	});
+
+	var button = document.querySelectorAll('.send');
+	var input = document.querySelector('#phone');
+	var name = document.querySelector('#name');
+	for (var i = 0; i < button.length; i++) {
+	  button[i].addEventListener('click', function() {
+	    if (input.value !== '' && name.value !== '') {} 
+			else{
+	     $('.error-text').removeClass('d-none');
+	     $('#phone').css('border', '2px solid #E30613');
+	     $('#name').css('border', '2px solid #E30613');
+			 $('form .button.dark.icon').addClass('disabled');
+	    }
+	  })
 	}
+
+	// if (document.querySelector('.map')) {
+	// 	;(function() {
+	// 		if (typeof ymaps === 'undefined') {
+	// 			return;
+	// 		}
+		
+	// 		ymaps.ready(function () {
+	// 			var ymap = document.querySelector('.map');
+  // 	    var coordinates = ymap.getAttribute('data-coordinates');
+  // 	    var address = ymap.getAttribute('data-address');
+	// 			var myMap = new ymaps.Map('ymap2', {
+	// 							center: coordinates.split(','),
+	// 							zoom: 17
+	// 					}, {
+	// 							searchControlProvider: 'yandex#search'
+	// 					}),
+	// 					myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+	// 							balloonContent: address
+	// 					});
+	// 			myMap.geoObjects.add(myPlacemark);
+	// 			myMap.behaviors.disable('scrollZoom');
+	// 	});
+	// 	})();
+	// }
 
 	$('.burger').on('click', function() {
 		$('.mobile-menu').addClass('active');
